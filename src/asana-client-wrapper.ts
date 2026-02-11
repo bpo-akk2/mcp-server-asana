@@ -434,4 +434,13 @@ export class AsanaClientWrapper {
     const response = await this.tasks.deleteTask(taskId);
     return response.data;
   }
+
+  async addTaskToSection(sectionId: string, taskId: string, data: any = {}) {
+    const sections = new Asana.SectionsApi();
+    const body: any = { data: { task: taskId } };
+    if (data.insert_before) body.data.insert_before = data.insert_before;
+    if (data.insert_after) body.data.insert_after = data.insert_after;
+    const response = await sections.addTaskForSection(body, sectionId);
+    return response.data;
+  }
 }
