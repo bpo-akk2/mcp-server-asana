@@ -440,7 +440,7 @@ export class AsanaClientWrapper {
     const body: any = { data: { task: taskId } };
     if (data.insert_before) body.data.insert_before = data.insert_before;
     if (data.insert_after) body.data.insert_after = data.insert_after;
-    const response = await sections.addTaskForSection(body, sectionId);
+    const response = await sections.addTaskForSection(sectionId, { body });
     return response.data;
   }
 }
